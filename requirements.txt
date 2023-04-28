@@ -2,3 +2,4 @@ https://github.com/vasusen-code/my-tt/archive/refs/tags/v1.24.0.zip
 cryptg
 tgcrypto
 https://github.com/MR-CODER-V2/ev4/archive/main.zip
+python-dotenv
