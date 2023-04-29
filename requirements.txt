@@ -3,3 +3,6 @@ cryptg
 tgcrypto
 https://github.com/MR-CODER-V2/ev4/archive/main.zip
 python-dotenv
+flask
+gunicorn
+aiohttp
