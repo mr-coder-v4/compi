@@ -44,7 +44,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4"
         out = new_name + ".mp4"
     elif 'x-matroska' in mime:
-        n = "media_" + dt.now().isoformat("_", "seconds") + ".mkv" 
+        n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4" 
         out = new_name + ".mp4"            
     elif 'webm' in mime:
         n = "media_" + dt.now().isoformat("_", "seconds") + ".webm" 
