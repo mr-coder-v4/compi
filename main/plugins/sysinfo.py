@@ -18,11 +18,3 @@ async def sysinfo(event):
     except FileNotFoundError:
         await event.reply("**Install neofetch first**")
 
-
-async def info(file, event):
-    process = subprocess.Popen(
-        ["mediainfo", file, "--Output=HTML"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-    )
-
