@@ -4,7 +4,7 @@ from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
-@Drone.on(events.NewMessage(incoming=True, pattern="/info"))
+@Drone.on(events.NewMessage(incoming=True, pattern="/memory"))
 async def test(event):
     try:
         zylern = "df -H"
@@ -17,3 +17,5 @@ async def test(event):
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
         await event.reply("**" + result + "**")
+    except FileNotFoundError:
+        await event.reply("**Unable to get available memory**")
