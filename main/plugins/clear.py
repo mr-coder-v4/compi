@@ -16,6 +16,6 @@ async def test(event):
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
-        await event.reply("**" + result + "**")
+        await event.reply("**"Successfully Cleared Downloaded Files"**")
     except FileNotFoundError:
         await event.reply("**Unable to Clear System Files**")
