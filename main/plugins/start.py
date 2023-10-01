@@ -31,14 +31,14 @@ async def test(event):
             zylern,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
-        )
+        
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
         await event.reply("**" + result + "**")
     except FileNotFoundError:
         await event.reply("**Install speedtest-cli**")
-
+        )
 Drone.on(events.NewMessage(incoming=True, pattern="/sysinfo"))
 async def sysinfo(event):
     try:
@@ -47,22 +47,14 @@ async def sysinfo(event):
             zyl,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
-        )
+    
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
         await event.reply("**" + result + "**")
     except FileNotFoundError:
         await event.reply("**Install neofetch first**")
-
-Drone.on(events.NewMessage(incoming=True, pattern="/info"))
-async def info(file, event):
-    process = subprocess.Popen(
-        ["mediainfo", file, "--Output=HTML"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
         )
-    
     
 
 
