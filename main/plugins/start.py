@@ -23,7 +23,7 @@ from ethon.mystarts import vc_menu
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 
-Drone.on(events.NewMessage(incoming=True, pattern="/speed"))
+Drone.on(events.NewMessage(incoming=True, pattern="/speedtest"))
 async def test(event):
     try:
         zylern = "speedtest --simple"
@@ -31,7 +31,7 @@ async def test(event):
             zylern,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
-        
+        )
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
@@ -47,7 +47,7 @@ async def sysinfo(event):
             zyl,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
-        
+        )
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
@@ -61,6 +61,8 @@ async def info(file, event):
         ["mediainfo", file, "--Output=HTML"],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
+        )
+    
     
 
 
