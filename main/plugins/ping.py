@@ -4,6 +4,7 @@ from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
+@Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
 async def test(event):
     try:
         zylern = "speedtest --simple"
