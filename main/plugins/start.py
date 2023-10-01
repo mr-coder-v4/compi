@@ -20,43 +20,6 @@ from LOCAL.localisation import JPG0 as file
 from LOCAL.localisation import info_text, spam_notice, help_text, DEV, source_text, SUPPORT_LINK
 from ethon.teleutils import mention
 from ethon.mystarts import vc_menu
-from asyncio import create_subprocess_shell as asyncrunapp
-from asyncio.subprocess import PIPE as asyncPIPE
-
-Drone.on(events.NewMessage(incoming=True, pattern="/speedtest"))
-async def test(event):
-    try:
-        zylern = "speedtest --simple"
-        fetch = await asyncrunapp(
-            zylern,
-            stdout=asyncPIPE,
-            stderr=asyncPIPE,
-        
-        stdout, stderr = await fetch.communicate()
-        result = str(stdout.decode().strip()) \
-            + str(stderr.decode().strip())
-        await event.reply("**" + result + "**")
-    except FileNotFoundError:
-        await event.reply("**Install speedtest-cli**")
-        )
-Drone.on(events.NewMessage(incoming=True, pattern="/sysinfo"))
-async def sysinfo(event):
-    try:
-        zyl = "neofetch --stdout"
-        fetch = await asyncrunapp(
-            zyl,
-            stdout=asyncPIPE,
-            stderr=asyncPIPE,
-    
-        stdout, stderr = await fetch.communicate()
-        result = str(stdout.decode().strip()) \
-            + str(stderr.decode().strip())
-        await event.reply("**" + result + "**")
-    except FileNotFoundError:
-        await event.reply("**Install neofetch first**")
-        )
-    
-
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/start"))
 async def start(event):
