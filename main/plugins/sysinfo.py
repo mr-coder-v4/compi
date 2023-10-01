@@ -1,3 +1,5 @@
+from .. import Drone
+from telethon import events, Button
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
