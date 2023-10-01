@@ -4,12 +4,12 @@ from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
-Drone.on(events.NewMessage(incoming=True, pattern="/sysinfo"))
-async def sysinfo(event):
+Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
+async def test(event):
     try:
-        zyl = "neofetch --stdout"
+        zylern = "speedtest --simple"
         fetch = await asyncrunapp(
-            zyl,
+            zylern,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
         )
@@ -18,5 +18,6 @@ async def sysinfo(event):
             + str(stderr.decode().strip())
         await event.reply("**" + result + "**")
     except FileNotFoundError:
-        await event.reply("**Install neofetch first**")
+        await event.reply("**Install speedtest-cli**")
+
 
