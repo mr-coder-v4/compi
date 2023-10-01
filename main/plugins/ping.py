@@ -5,6 +5,7 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
+await event.reply("Please Wait For 30 Seconds")
 async def test(event):
     try:
         zylern = "speedtest --simple"
