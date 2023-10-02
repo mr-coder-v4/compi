@@ -3,7 +3,6 @@ from telethon import events, Button
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal, sys, platform, sysconfig
-from bot import ffmpegcode, LOG_FILE_NAME
 from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/memory2"))
