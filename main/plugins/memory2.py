@@ -5,8 +5,8 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal, sys, platform, sysconfig
 from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
-@Drone.on(events.NewMessage(incoming=True, pattern="/memory2"))
-async def mem2(event):
+@Drone.on(events.NewMessage(incoming=True, pattern="/storage"))
+async def storage(event):
     total, used, free, disk= disk_usage('/')
     total = str(total.total / (1024.0 ** 3))
     free = str(free.total / (1024.0 ** 3))
