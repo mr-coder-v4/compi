@@ -11,7 +11,7 @@ async def storage(event):
     total = round(total/1024.0/1024.0/1024.0,1)
     free = round(free/1024.0/1024.0/1024.0,1)
     memory = virtual_memory()
-    mem_p = round(memory.percent + '%')
+    mem_p = round(memory.percent)
     mem_t = round(memory.total/1024.0/1024.0/1024.0,1)
     mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
     mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
