@@ -15,6 +15,6 @@ async def storage(event):
     mem_t = round(memory.total/1024.0/1024.0/1024.0,1)
     mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
     mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
-    cpu = str(psutil.cpu_percent())
-    await event.reply(f"**OS:** {platform.system()}\n**VERSION:** {platform.release()}\n**ARCH:** {platform.architecture()}\n**CPU USAGE:** {cpu_percent}%\n**TOTAL DISK SPACE:** {total} GB\n**FREE DISK SPACE:** {free} GB\n**RAM UTILIZATION:** {mem_p}%\n**TOTAL RAM:** {mem_t} GB\n**AVAILABLE RAM:** {mem_a} GB\n**RAM UTILIZED:** {mem_u} GB\n")
+    cpu = str(psutil.cpu_percent(10))
+    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**CPU Utilization:** {cpu_percent}%\n**Total Disk Space:** {total} GB\n**Available Disk Space:** {free} GB\n**Memory Utilization:** {mem_p}%\n**Total Memory:** {mem_t} GB\n**AvailableMemory Free:** {mem_a} GB\n**Memory Utilized:** {mem_u} GB\n")
     return
