@@ -15,5 +15,5 @@ async def storage(event):
     mem_t = str(memory.total / 1024.000000 ** 2)
     mem_a = str(memory.available / 1024.000000 ** 2)
     mem_u = str(memory.used / 1024.0000000 ** 2)
-    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**Total Disk Space:** {total}\n**Free:** {free}\n**Memory Total:** {mem_t}\n**Memory Free:** {mem_a}\n**Memory Used:** {mem_u}\n")
+    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**Total Disk Space:** {total}\n**Free:** {free}\n**Memory Percent:** {mem_p}\n**Memory Total:** {mem_t}\n**Memory Free:** {mem_a}\n**Memory Used:** {mem_u}\n")
     return
