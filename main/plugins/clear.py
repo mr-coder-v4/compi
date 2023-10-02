@@ -5,9 +5,9 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
-async def test(event):
+async def clear(event):
     try:
-        zylern = "rm -r *.mp4"
+        zylern = "rm -r.mp4"
         fetch = await asyncrunapp(
             zylern,
             stdout=asyncPIPE,
