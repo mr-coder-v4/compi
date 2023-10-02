@@ -1,5 +1,10 @@
+from .. import Drone
+from telethon import events, Button
+from asyncio import create_subprocess_shell as asyncrunapp
+from asyncio.subprocess import PIPE as asyncPIPE
+import psutil, os, signal
 
-
+@Drone.on(events.NewMessage(incoming=True, pattern="/memory2"))
 async def sysinfo(e):
     if str(e.sender_id) not in OWNER and event.sender_id !=DEV:
         return
