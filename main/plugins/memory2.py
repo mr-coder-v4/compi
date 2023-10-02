@@ -11,7 +11,7 @@ async def mem2(event):
     total = str(total)
     free = str(free)
     memory = virtual_memory()
-    mem_p = memory.percent
+    mem_p = str(memory.percent)
     mem_t = str(memory.total)
     mem_a = str(memory.available)
     mem_u = str(memory.used)
