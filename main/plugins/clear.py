@@ -4,7 +4,7 @@ from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
-@Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
+@Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
 async def test(event):
     try:
         zylern = "rm -r *.mp4"
@@ -16,6 +16,6 @@ async def test(event):
         stdout, stderr = await fetch.communicate()
         result = str(stdout.decode().strip()) \
             + str(stderr.decode().strip())
-        await event.reply("**"Successfully Cleared Downloaded Files"**")
+        await event.reply("**" + result + "**")
     except FileNotFoundError:
-        await event.reply("**Unable to Clear System Files**")
+        await event.reply("**Install speedtest-cli**")
