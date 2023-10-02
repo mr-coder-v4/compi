@@ -5,7 +5,7 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/memory2"))
-async def sysinfo(event):
+async def mem2(event):
     total, used, free, disk= disk_usage('/')
     total = hbs(total)
     free = hbs(free)
