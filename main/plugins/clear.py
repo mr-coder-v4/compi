@@ -4,7 +4,7 @@ from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
-@Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
+@Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
 async def clear(event):
     try:
         zylern = "rm -r *.mp4"
