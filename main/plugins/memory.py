@@ -5,7 +5,7 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/memory"))
-async def test(event):
+async def mem(event):
     try:
         zylern = "df -H"
         fetch = await asyncrunapp(
