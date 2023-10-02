@@ -9,7 +9,7 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 async def storage(event):
     total, used, free, disk= disk_usage('/')
     total = str(total/1024.0/1024.0/1024.0,1)
-    free = str(free/1024.0/1024.0/1024.0,1))
+    free = str(free/1024.0/1024.0/1024.0,1)
     memory = virtual_memory()
     mem_p = str(memory.percent + %)
     mem_t = str(memory.total/1024.0/1024.0/1024.0,1)
