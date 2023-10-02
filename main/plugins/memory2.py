@@ -5,9 +5,7 @@ from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/memory2"))
-async def sysinfo(e):
-    if str(e.sender_id) not in OWNER and event.sender_id !=DEV:
-        return
+async def sysinfo(event):
     total, used, free, disk= disk_usage('/')
     total = hbs(total)
     free = hbs(free)
