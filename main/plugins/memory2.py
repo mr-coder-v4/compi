@@ -8,8 +8,8 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 @Drone.on(events.NewMessage(incoming=True, pattern="/storage"))
 async def storage(event):
     total, used, free, disk= disk_usage('/')
-    total = str(total) / (1024.0 ** 3)
-    free = str(free) / (1024.0 ** 3)
+    total = str(total / 1024.0 ** 3)
+    free = str(free / (1024.0 ** 3))
     memory = virtual_memory() / (1024.0 ** 3)
     mem_p = str(memory.percent)
     mem_t = str(memory.total) / (1024.0 ** 3)
