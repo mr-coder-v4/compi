@@ -15,8 +15,8 @@ async def storage(event):
     mem_t = round(memory.total/1024.0/1024.0/1024.0,1)
     mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
     mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
-    cpu = str(psutil.cpu_percent(10))
-    load1, load5, load10 = psutil.getloadavg()
-    cpu_usage = (load10/os.cpu_count()) * 100
+    cpu = str(psutil.cpu_percent(60))
+    load1, load5 = psutil.getloadavg()
+    cpu_usage = (load5/os.cpu_count()) * 100
     await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**CPU Utilization:** {cpu}%\n**CPU Stress Past 10 min:** {cpu_usage}\n**Total Disk Space:** {total} GB\n**Available Disk Space:** {free} GB\n**Memory Utilization:** {mem_p}%\n**Total Memory:** {mem_t} GB\n**AvailableMemory Free:** {mem_a} GB\n**Memory Utilized:** {mem_u} GB\n")
     return
