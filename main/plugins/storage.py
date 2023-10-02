@@ -8,12 +8,12 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 @Drone.on(events.NewMessage(incoming=True, pattern="/storage"))
 async def storage(event):
     total, used, free, disk= disk_usage('/')
-    total = str(total/1024.0/1024.0/1024.0,1)
-    free = str(free/1024.0/1024.0/1024.0,1)
+    total = round(total/1024.0/1024.0/1024.0,1)
+    free = round(free/1024.0/1024.0/1024.0,1)
     memory = virtual_memory()
-    mem_p = str(memory.percent + %)
-    mem_t = str(memory.total/1024.0/1024.0/1024.0,1)
-    mem_a = str(memory.available/1024.0/1024.0/1024.0,1)
-    mem_u = str(memory.used/1024.0/1024.0/1024.0,1)
+    mem_p = round(memory.percent + '%')
+    mem_t = round(memory.total/1024.0/1024.0/1024.0,1)
+    mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
+    mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
     await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**Total Disk Space:** {total}\n**Free:** {free}\n**Memory Percent:** {mem_p}\n**Memory Total:** {mem_t}\n**Memory Free:** {mem_a}\n**Memory Used:** {mem_u}\n")
     return
