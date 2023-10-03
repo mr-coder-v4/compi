@@ -41,7 +41,7 @@ async def user(event):
     ids = []
     all_users = await db.get_users()
     async for user in all_users:
-        user_id = user.get("id", None) 
+        user_id = user.get("id") 
         ids.append(user_id)
     await event.reply(f"List of Total user(s) (user_id)")
     
