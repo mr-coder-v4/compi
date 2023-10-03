@@ -19,5 +19,5 @@ async def storage(event):
     mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
     mem_f = round(memory.free/1024.0/1024.0/1024.0,1)
     mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
-    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n-------------------------------------------------\nTotal Disk Space: {d_t} GB\nUsed Disk Space: {d_u} GB\nUsed Disk Percentage: {d_p}%\nAvailable Disk Space: {d_f} GB\n-------------------------------------------------\nMemory Utilization: {mem_p}%\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\n")
+    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n--------------------------------------------------\nTotal Disk Space: {d_t} GB\nAvailable Disk Space: {d_f} GB\nUsed Disk Space: {d_u} GB\nUsed Disk Percentage: {d_p}%\n--------------------------------------------------\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\nRAM Utilized Percentage: {mem_p}%\n")
     return
