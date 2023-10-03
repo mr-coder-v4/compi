@@ -34,9 +34,15 @@ async def listusers(event):
     x = await db.total_users_count()
     await xx.edit(f"Total user(s) {int(x)}")
 
+
+ def __init__(self, MONGODB_URI, SESSION_NAME):
+     self._client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URI)
+     self.db = self._client[SESSION_NAME]
+     self.col = self.db.users
+
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
-async def get_users(self):
-    users = db.system.users.find()
+async def get_users():
+    users = self.col.find({})
     return users
     xxx = users
     await event.reply(f"List of user(s) {int(xxx)}")
