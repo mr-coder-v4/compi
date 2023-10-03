@@ -39,7 +39,7 @@ async def listusers(event):
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
 async def user(event):
     all_users = await db.get_users()
-    await event.reply(f"List of Total user(s) (all_users)")
+    await event.reply(f"List of Total user(s) {all_users}")
     
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/bcast"))
 async def bcast(event):
