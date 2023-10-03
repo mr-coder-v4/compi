@@ -14,5 +14,5 @@ async def storage(event):
     cpu_physical = psutil.cpu_count(physical=True)
     cpu_logical = psutil.cpu_count(logical=True)
     cpu_usable = len(psutil.Process().cpu_affinity())
-    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: platform.architecture()}**\nCPU Utilization: {cpu}%\nCPU Load Past 10 Min: {cpu_usage}\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nCPU Logical Cores: {cpu_logical}\nCPU Physical Cores: {cpu_physical}\n")
+    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: {platform.architecture()}**\nCPU Utilization: {cpu}%\nCPU Load Past 10 Min: {cpu_usage}\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nCPU Logical Cores: {cpu_logical}\nCPU Physical Cores: {cpu_physical}\n")
     return
