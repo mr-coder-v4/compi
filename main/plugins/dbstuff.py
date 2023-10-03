@@ -36,7 +36,7 @@ async def listusers(event):
 
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
 async def get_users(self):
-    users = self.col.find({})
+    users = db.system.users.find()
     return users
     xxx = users
     await event.reply(f"List of user(s) {int(xxx)}")
