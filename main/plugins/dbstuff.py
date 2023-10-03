@@ -35,11 +35,11 @@ async def listusers(event):
     await xx.edit(f"Total user(s) {int(x)}")
 
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
-async def listusers(event):
-    xx = await event.reply("Counting total users in Database.")
-    xxx = await db.getusers()
-    await xx.edit(f"Total user(s) {int(x)}")
-    await xxx.edit(f"Total user(s) {int(x)}")
+async def get_users(self):
+    users = self.col.find({})
+    return users
+    xxx = users
+    await event.reply(f"List of user(s) {int(xxx)}")
     
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/bcast"))
 async def bcast(event):
