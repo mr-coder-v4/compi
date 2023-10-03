@@ -38,7 +38,7 @@ async def listusers(event):
 
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
 async def users():
-    users = getusers()
+    users = db.getUsers();
     return users
     xxx = users
     await event.reply(f"List of user(s) {int(xxx)}")
