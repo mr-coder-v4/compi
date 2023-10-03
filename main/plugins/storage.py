@@ -13,8 +13,9 @@ async def storage(event):
     memory = psutil.virtual_memory()
     swap = psutil.swap_memory()
     mem_p = memory.percent
-    mem_t = round(swap.total/1024.0/1024.0/1024.0,1)
-    mem_a = round(swap.free/1024.0/1024.0/1024.0,1)
-    mem_u = round(swap.used/1024.0/1024.0/1024.0,1)
-    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\nTotal Disk Space: {total} GB\nAvailable Disk Space: {free} GB\nMemory Utilization: {mem_p}%\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nRAM Utilized: {mem_u} GB\n")
+    mem_t = round(memory.total/1024.0/1024.0/1024.0,1)
+    mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
+    mem_f = round(memory.free/1024.0/1024.0/1024.0,1)
+    mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
+    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\nTotal Disk Space: {total} GB\nAvailable Disk Space: {free} GB\nMemory Utilization: {mem_p}%\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\n")
     return
