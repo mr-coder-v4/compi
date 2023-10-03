@@ -10,3 +10,5 @@ pymongo[srv]
 requests
 telegraph
 tgcrypto
+psutil
+speedtest-cli
