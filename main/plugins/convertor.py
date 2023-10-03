@@ -52,7 +52,7 @@ async def mp3(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.mp3', f'{out}.mp3', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
@@ -102,7 +102,7 @@ async def flac(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.flac', f'{out}.flac', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
@@ -153,7 +153,7 @@ async def wav(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.wav', f'{out}.wav', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
@@ -201,7 +201,7 @@ async def mp4(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.mp4', f'{out}.mp4', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         print(e)
         return await edit.edit(f"An error occured while uploading!")
@@ -246,7 +246,7 @@ async def mkv(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         print(e)
         return await edit.edit(f"An error occured while uploading!")
@@ -291,7 +291,7 @@ async def webm(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         print(e)
         return await edit.edit(f"An error occured while uploading!")
@@ -326,7 +326,7 @@ async def file(event, msg):
     try:
         UT = time.time()
         uploader = await fast_upload(f'{name}', f'{name}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'x', force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=x, force_document=False)
     except Exception as e:
         print(e)
         return await edit.edit(f"An error occured while uploading!")
@@ -376,7 +376,7 @@ async def video(event, msg):
         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]           
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG2, caption=f'x', attributes=attributes, force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG2, caption=x, attributes=attributes, force_document=False)
     except Exception as e:
         print(e)
         return await edit.edit(f"An error occured while uploading!")
