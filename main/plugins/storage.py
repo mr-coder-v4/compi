@@ -7,9 +7,11 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/storage"))
 async def storage(event):
-    total, used, free, disk= psutil.disk_usage('/')
-    total = round(total/1024.0/1024.0/1024.0,1)
-    free = round(free/1024.0/1024.0/1024.0,1)
+    disk= psutil.disk_usage('/')
+    total = round(disk.total/1024.0/1024.0/1024.0,1)
+    used = round(disk.used/1024.0/1024.0/1024.0,1)
+    used_p = round(disk.percent/1024.0/1024.0/1024.0,1)
+    free = round(disk.free/1024.0/1024.0/1024.0,1)
     memory = psutil.virtual_memory()
     swap = psutil.swap_memory()
     mem_p = memory.percent
@@ -17,5 +19,5 @@ async def storage(event):
     mem_a = round(memory.available/1024.0/1024.0/1024.0,1)
     mem_f = round(memory.free/1024.0/1024.0/1024.0,1)
     mem_u = round(memory.used/1024.0/1024.0/1024.0,1)
-    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\nTotal Disk Space: {total} GB\nAvailable Disk Space: {free} GB\nMemory Utilization: {mem_p}%\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\n")
+    await event.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\nTotal Disk Space: {total} GB\nUsed Disk Space: {used}\n\nAvailable Disk Space: {free} GB\n--------------------------\nMemory Utilization: {mem_p}%\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\n")
     return
