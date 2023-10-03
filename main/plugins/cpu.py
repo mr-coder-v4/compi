@@ -8,14 +8,16 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 @Drone.on(events.NewMessage(incoming=True, pattern="/cpu"))
 async def storage(event):
     cpu = psutil.cpu_percent(interval=1)
-    cpu_usage = [x / psutil.cpu_count() * 100 for x in psutil.getloadavg()]
+    load1, load5, load15 = psutil.getloadavg()
+    cpu_usage1 = (load1/os.cpu_count()) * 100
+    cpu_usage5 = (load5/os.cpu_count()) * 100
+    cpu_usage15 = (load15/os.cpu_count()) * 100
     cpu_total = psutil.cpu_count()
-    cpu_logical = psutil.cpu_count(logical=False)
     cpu_physical = psutil.cpu_count(logical=False)
     cpu_usable = len(psutil.Process().cpu_affinity())
     freq = psutil.cpu_freq()
     cpu_cur = freq.current
     cpu_max = freq.max
     cpu_min = freq.min
-    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: {platform.architecture()}**\nCPU Utilization: {cpu}%\nCPU Load Past 1, 5, 15 Min: {cpu_usage}\n--------------------------------------------------\nCPU Frequency: current={cpu_cur}, max{cpu_max}, min={cpu_min}\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nLogical CPU Cores: {cpu_logical}\nPhysical CPU Cores: {cpu_physical}\n")
+    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: {platform.architecture()}**\nCPU Utilization: {cpu}%\nCPU Load Past 1, 5, 15 Min: {cpu_usage1, cpu_usage5, cpu_usage15}\n--------------------------------------------------\nCPU Frequency:\ncurrent={cpu_cur}, \nmax{cpu_max}, \nmin={cpu_min}\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nPhysical CPU Cores: {cpu_physical}\n")
     return
