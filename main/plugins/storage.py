@@ -10,7 +10,7 @@ async def storage(event):
     disk= psutil.disk_usage('/')
     d_tot = round(disk.total/1024.0/1024.0/1024.0,1)
     d_use = round(disk.used/1024.0/1024.0/1024.0,1)
-    d_p = round(disk.percent/1024.0/1024.0/1024.0,1)
+    d_p = disk.percent
     d_f = round(disk.free/1024.0/1024.0/1024.0,1)
     memory = psutil.virtual_memory()
     swap = psutil.swap_memory()
