@@ -37,7 +37,7 @@ async def listusers(event):
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH_USERS , pattern="/list"))
 async def listusers(event):
     xx = await event.reply("Counting total users in Database.")
-    xxx = await db.getUsers()
+    xxx = await db.getusers()
     await xx.edit(f"Total user(s) {int(x)}")
     await xxx.edit(f"Total user(s) {int(x)}")
     
