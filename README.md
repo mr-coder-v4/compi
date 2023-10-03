@@ -25,15 +25,15 @@
 Main branch is to deploy a bot for your `personal` use only. Deploy from `public` branch if you need bot for your channel. 
 
 Available Command's:
-`
-*/start - Check Bot Working or not
-*/ping - Check Ping & Download, Upload Speed
-*/cpu - Detailed CPU info
-*/storage - Detailed Memory Info
-*/sysinfo - System Information
-*/memory - Disk info
-*/clear - Clear all Downloads
-`
+
+* `/start - Check Bot Working or not`
+* `/ping - Check Ping & Download, Upload Speed`
+* `/cpu - Detailed CPU info`
+* `/storage - Detailed Memory Info`
+* `/sysinfo - System Information`
+* `/memory - Disk info`
+* `/clear - Clear all Downloads`
+
 VARIABLES required are:
 
 * `API_ID`
