@@ -8,6 +8,8 @@ import psutil, os, signal
 async def clear(event):
     try:
         zylern = "rm -r *.mp4"
+        zylern = "rm -r *.txt"
+        zylern = "rm -rf encodemedia"
         fetch = await asyncrunapp(
             zylern,
             stdout=asyncPIPE,
