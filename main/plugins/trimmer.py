@@ -56,7 +56,7 @@ async def trim(event, msg, st, et):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading.\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False) 
+        return await edit.edit(f"An error occured while downloading.)", link_preview=False) 
     try:
         await edit.edit("Trimming.")
         bash(f'ffmpeg -i {name} -ss {st} -to {et} -acodec copy -vcodec copy {out}')
@@ -64,9 +64,9 @@ async def trim(event, msg, st, et):
         rename(out, out2)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while trimming!\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False)
+        return await edit.edit(f"An error occured while trimming!)", link_preview=False)
     UT = time.time()
-    text = f"**TRIMMED by :** @{BOT_UN}"
+    text = msg.file.name
     try:
         metadata = video_metadata(out2)
         width = metadata["width"]
@@ -81,7 +81,7 @@ async def trim(event, msg, st, et):
             await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
         except Exception as e:
             print(e)
-            return await edit.edit(f"An error occured while uploading.\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False)
+            return await edit.edit(f"An error occured while uploading.)", link_preview=False)
     await edit.delete()
     os.remove(name)
     os.remove(out2)
