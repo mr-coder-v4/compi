@@ -19,5 +19,5 @@ async def storage(event):
     cpu_cur = freq.current
     cpu_max = freq.max
     cpu_min = freq.min
-    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: {platform.architecture()}**\n--------------------------------------------------\nCPU Utilization: {cpu}%\nCPU Load Past 1 Min: {cpu_usage1}\nCPU Load Past 5 Min: {cpu_usage5}\nCPU Load Past 15 Min: {cpu_usage15}\n--------------------------------------------------\nCPU Frequency:\ncurrent={cpu_cur}, \nmax{cpu_max}, \nmin={cpu_min}\n--------------------------------------------------\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nPhysical CPU Cores: {cpu_physical}\n")
+    await event.reply(f"**OS: {platform.system()}**\n**Version: {platform.release()}**\n**Architecture: {platform.architecture()}**\n------------------------------------------------------------\nCPU Utilization: {cpu}%\nLoad Past 1 Min: {cpu_usage1}\nLoad Past 5 Min: {cpu_usage5}\nLoad Past 15 Min: {cpu_usage15}\n------------------------------------------------------------\nCPU Frequency:\ncurrent={cpu_cur}, \nmax{cpu_max}, \nmin={cpu_min}\n------------------------------------------------------------\nTotal CPU Cores: {cpu_total}\nUsable CPU Cores: {cpu_usable}\nPhysical CPU Cores: {cpu_physical}\n")
     return
