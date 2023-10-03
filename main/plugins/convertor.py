@@ -54,14 +54,14 @@ async def mp3(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.mp3', f'{out}.mp3', UT, Drone, edit, '**UPLOADING:**')
@@ -69,7 +69,7 @@ async def mp3(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()
     os.remove(name)
     os.remove(f'{out}.mp3')                           
@@ -103,7 +103,7 @@ async def flac(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
@@ -111,7 +111,7 @@ async def flac(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.flac', f'{out}.flac', UT, Drone, edit, '**UPLOADING:**')
@@ -119,7 +119,7 @@ async def flac(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()
     os.remove(name)
     os.remove(f'{out}.mp3')                           
@@ -154,7 +154,7 @@ async def wav(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         bash(f"ffmpeg -i {name} -codec:a libmp3lame -q:a 0 {out}.mp3")
@@ -162,7 +162,7 @@ async def wav(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.wav', f'{out}.wav', UT, Drone, edit, '**UPLOADING:**')
@@ -170,7 +170,7 @@ async def wav(event, msg):
     except Exception as e:
         os.rmdir("audioconvert")
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()
     os.remove(name)
     os.remove(f'{out}.mp3')                           
@@ -204,20 +204,20 @@ async def mp4(event, msg):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         rename(name, f'{out}.mp4')
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}.mp4', f'{out}.mp4', UT, Drone, edit, '**UPLOADING:**')
         await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'**CONVERTED by** : @{BOT_UN}', force_document=True)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()                      
     os.remove(f'{out}.mp4')                 
                                            
@@ -249,20 +249,20 @@ async def mkv(event, msg):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         rename(name, f'{out}')
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'**CONVERTED by** : @{BOT_UN}', force_document=True)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG,', force_document=false)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()                        
     os.remove(f'{out}')
              
@@ -294,20 +294,20 @@ async def webm(event, msg):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         rename(name, f'{out}')
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'**CONVERTED by** : @{BOT_UN}', force_document=True)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG,', force_document=True)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()                 
     os.remove(f'{out}')
              
@@ -335,14 +335,14 @@ async def file(event, msg):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         UT = time.time()
         uploader = await fast_upload(f'{name}', f'{name}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG, caption=f'**CONVERTED by** : @{BOT_UN}', force_document=True)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG,', force_document=True)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()
     os.remove(name)                           
     
@@ -374,13 +374,13 @@ async def video(event, msg):
         await fast_download(name, file, Drone, edit, DT, "**DOWNLOADING:**")
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while downloading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while downloading!")
     try:
         await edit.edit("Converting.")
         rename(name, f'{out}')
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while converting!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while converting!")
     try:
         metadata = video_metadata(out)
         width = metadata["width"]
@@ -389,10 +389,10 @@ async def video(event, msg):
         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]           
         UT = time.time()
         uploader = await fast_upload(f'{out}', f'{out}', UT, Drone, edit, '**UPLOADING:**')
-        await Drone.send_file(event.chat_id, uploader, thumb=JPG2, caption=f'**CONVERTED by** : @{BOT_UN}', attributes=attributes, force_document=False)
+        await Drone.send_file(event.chat_id, uploader, thumb=JPG2,', attributes=attributes, force_document=False)
     except Exception as e:
         print(e)
-        return await edit.edit(f"An error occured while uploading!\n\nContact [SUPPORT]({SUPPORT_LINK})")
+        return await edit.edit(f"An error occured while uploading!")
     await edit.delete()
     os.remove(out)                           
     
