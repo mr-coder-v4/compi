@@ -7,9 +7,9 @@ import psutil, os, signal
 @Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
 async def clear(event):
     try:
-        zylern = "rm*.mp4"
+        zylern = "rm *.mp4"
         zylern = "rm -rf encodemedia"
-        zylern = "rm -r *.txt"
+        zylern = "rm *.txt"
         fetch = await asyncrunapp(
             zylern,
             stdout=asyncPIPE,
