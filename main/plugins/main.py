@@ -201,8 +201,6 @@ async def hcomp(event):
         await compress(event, msg, ffmpeg_cmd=1)
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
-    else:
-        await event.edit("Another process in progress!")
  
 @Drone.on(events.callbackquery.CallbackQuery(data="fcomp"))
 async def fcomp(event):
