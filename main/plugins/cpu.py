@@ -8,11 +8,11 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 @Drone.on(events.NewMessage(incoming=True, pattern="/cpu"))
 async def storage(event):
     cpu = psutil.cpu_percent(interval=1)
-    load1, load5, load15 = psutil.getloadavg()
-    cpu_usage1 = (load1/os.multiprocessing.cpu_count()) * 100
-    cpu_usage5 = (load5/os.multiprocessing.cpu_count()) * 100
-    cpu_usage15 = (load15/os.multiprocessing.cpu_count()) * 100
     cpu_total = multiprocessing.cpu_count()
+    load1, load5, load15 = psutil.getloadavg()
+    cpu_usage1 = (load1/cpu_total) * 100
+    cpu_usage5 = (load5/cpu_total) * 100
+    cpu_usage15 = (load15/cpu_total) * 100
     cpu_physical = multiprocessing.cpu_count(logical=False)
     cpu_usable = len(psutil.Process().cpu_affinity())
     freq = psutil.cpu_freq()
