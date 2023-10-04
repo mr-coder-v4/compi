@@ -108,9 +108,9 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     os.rename(out, out2)
     i_size = os.path.getsize(name)
     f_size = os.path.getsize(out2)     
-    text = F'**ENCODED by:** @{BOT_UN}'
+    text = f'{msg.file.name}'
     if ps_name != "**ENCODING:**":
-        text = f'**COMPRESSED by** : @{BOT_UN}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
+        text = f'{msg.file.name}'
     UT = time.time()
     await log.edit("Uploading file.")
     if 'x-matroska' in mime:
