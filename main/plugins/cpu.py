@@ -7,7 +7,7 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/cpu"))
 async def storage(event):
-    cpu = psutil.cpu_percent(interval=None)
+    cpu = psutil.cpu_percent()
     load1, load5, load15 = psutil.getloadavg()
     cpu_usage1 = round((load1/os.cpu_count()) * 100,2)
     cpu_usage5 = round((load5/os.cpu_count()) * 100,2)
