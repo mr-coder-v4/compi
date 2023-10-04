@@ -96,14 +96,14 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     os.rename(out, out2)
     i_size = os.path.getsize(name)
     f_size = os.path.getsize(out2)
-    text = f'{msg.file.name}'
+    text = f'{msg.file.name}\n\nBefore compressing : `{i_size}/1024.0/1024.0,1`\nAfter compressing : `{f_size}/1024.0/1024.0,1`'
     if ps_name != "**ENCODING:**":
-        text = f'{msg.file.name}'
+        text = f'{msg.file.name}\n\nBefore compressing : `{i_size}/1024.0/1024.0,1`\nAfter compressing : `{f_size}/1024.0/1024.0,1`'
     UT = time.time()
     if 'webm' in mime:
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
         except Exception as e:
             os.rmdir("encodemedia")
             print(e)
@@ -111,7 +111,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     elif 'x-matroska' in mime:
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
         except Exception as e:
             os.rmdir("encodemedia")
             print(e)
@@ -124,11 +124,11 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG3, attributes=attributes, force_document=False)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG3, attributes=attributes, force_document=True)
         except Exception:
             try:
                 uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-                await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
+                await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
             except Exception as e:
                 os.rmdir("encodemedia")
                 print(e)
