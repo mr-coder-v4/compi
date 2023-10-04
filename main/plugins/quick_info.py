@@ -9,10 +9,10 @@ async def quick_info(event):
     memory = psutil.virtual_memory()
     available = round(memory.available/1024.0/1024.0/1024.0,2)
     total = round(memory.total/1024.0/1024.0/1024.0,2)
-    mem_info = str(available) + 'GB Free / ' + str(total) + 'GB Total ( ' + str(memory.percent) + '% )'
+    mem_info = str(available) + 'GB  / ' + str(total) + 'GB  ( ' + str(memory.percent) + '% )'
     disk = psutil.disk_usage('/')
     free = round(disk.free/1024.0/1024.0/1024.0,2)
     total = round(disk.total/1024.0/1024.0/1024.0,2)
-    disk_info = str(free) + 'GB Free / ' + str(total) + 'GB Total ( ' + str(disk.percent) + '% )'
+    disk_info = str(free) + 'GB  / ' + str(total) + 'GB  ( ' + str(disk.percent) + '% )'
     await event.reply(f"CPU: {cpu}\nDisk: {disk_info}\nMemory: {mem_info}")
     return
