@@ -13,7 +13,7 @@ async def storage(event):
     cpu_usage1 = (load1/cpu_total) * 100
     cpu_usage5 = (load5/cpu_total) * 100
     cpu_usage15 = (load15/cpu_total) * 100
-    cpu_physical = multiprocessing.cpu_count(logical=False)
+    cpu_physical = psutil.cpu_count(logical=False)
     cpu_usable = len(psutil.Process().cpu_affinity())
     freq = psutil.cpu_freq()
     cpu_cur = freq.current
