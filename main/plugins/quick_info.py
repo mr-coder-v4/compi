@@ -9,7 +9,7 @@ async def quick_info(event):
     memory = psutil.virtual_memory()
     available = round(memory.available/1024.0/1024.0/1024.0,2)
     total = round(memory.total/1024.0/1024.0/1024.0,2)
-    mem_info = str(available) + '  / ' + str(total) + '  ( ' + str(memory.percent) + '%)'
+    mem_info = str(available) + ' / ' + str(total) + '  ( ' + str(memory.percent) + '%)'
     disk = psutil.disk_usage('/')
     free = round(disk.free/1024.0/1024.0/1024.0,2)
     total = round(disk.total/1024.0/1024.0/1024.0,2)
