@@ -96,9 +96,9 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     os.rename(out, out2)
     i_size = os.path.getsize(name)
     f_size = os.path.getsize(out2)
-    text = f'{out2}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
+    text = f'{out}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
     if ps_name != "**ENCODING:**":
-        text = f'{out2}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
+        text = f'{out}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
     UT = time.time()
     if 'webm' in mime:
         try:
