@@ -27,6 +27,8 @@ Main branch is to deploy a bot for your `personal` use only. Deploy from `public
 Available Command's:
 
 * `/start - Check Bot Working or not`
+
+* `/info - Get Quick System Info`
   
 * `/ping - Check Ping & Download, Upload Speed`
   
