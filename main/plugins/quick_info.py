@@ -5,7 +5,7 @@ from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/info"))
 async def quick_info(event):
-    cpu = str(psutil.cpu_percent(interval=None)) + '%'
+    cpu = str(psutil.cpu_percent()) + '%'
     memory = psutil.virtual_memory()
     available = round(memory.available/1024.0/1024.0/1024.0,2)
     total = round(memory.total/1024.0/1024.0/1024.0,2)
