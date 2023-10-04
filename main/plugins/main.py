@@ -202,7 +202,21 @@ async def hcomp(event):
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
     else:
-        await event.edit("Another process in progress!")
+        return
+        if WORKING or QUEUE:
+            time.sleep(2)
+            xxx = await event.reply("**Adding To Queue...**")
+            # id = pack_bot_file_id(event.media)
+            doc = event.media.document
+            if doc.id in list(QUEUE.keys()):
+                return await xxx.edit("**This File is Already Added in Queue**")
+            name = event.file.name
+            if not name:
+                name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
+            QUEUE.update({doc.id: [name, doc]})
+            return await xxx.edit(
+                "**Added This File in Queue**"
+            )
  
 @Drone.on(events.callbackquery.CallbackQuery(data="fcomp"))
 async def fcomp(event):
