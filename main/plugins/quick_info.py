@@ -13,6 +13,6 @@ async def quick_info(event):
     disk = psutil.disk_usage('/')
     free = round(disk.free/1024.0/1024.0/1024.0,2)
     total = round(disk.total/1024.0/1024.0/1024.0,2)
-    disk_info = str(free) '+ GB' + str(disk.percent) + '%/' + str(total) '+ GB'
+    disk_info = str(free) + 'GB' '(' + str(disk.percent) + '%)' '/' + str(total) + 'GB' 
     await event.reply(f"CPU: {cpu}\nDisk: {disk_info}\nMemory: {mem_info}")
     return
