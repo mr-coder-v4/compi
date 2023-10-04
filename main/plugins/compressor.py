@@ -84,7 +84,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     os.rename(out, out2)
     i_size = round(os.path.getsize(name)/1024.0/1024.0,2)
     f_size = round(os.path.getsize(out2)/1024.0/1024.0,2)
-    s_size = i_size-f_size
+    s_size = format(i_size-f_size,.f3)
     text = f'{msg.file.name}\n\n`Before Compress 🗜️: {i_size}MB`\n`After Compress ⚙️: {f_size}MB`\n` Saved: {s_size}MB`'
     if ps_name != "**ENCODING:**":
         text = f'{msg.file.name}\n\n`Before Compress 🗜️: {i_size}MB`\n`After Compress ⚙️: {f_size}MB`\n`Saved : {s_size}MB`'
