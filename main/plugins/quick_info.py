@@ -16,5 +16,5 @@ async def quick_info(event):
     free = round(disk.free/1024.0/1024.0/1024.0,2)
     total = round(disk.total/1024.0/1024.0/1024.0,2)
     disk_info = str(free) + 'GB Free / ' + str(total) + 'GB Total ( ' + str(disk.percent) + '% )'
-    await event.reply(f"CPU Info: {cpu}\nMemory Info: {mem_info}\nDisk Info: {disk_info}")
+    await event.reply(f"CPU: {cpu}\nDisk: {disk_info}\nMemory: {mem_info}")
     return
