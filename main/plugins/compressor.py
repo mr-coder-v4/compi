@@ -106,11 +106,12 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     else:
         out2 = dt.now().isoformat("_", "seconds") + ".mp4" 
     os.rename(out, out2)
-    i_size = os.path.getsize(name)
-    f_size = os.path.getsize(out2)     
-    text = f'{msg.file.name}'
+    i_size = round(os.path.getsize(name)/1024.0/1024.0,2)
+    f_size = round(os.path.getsize(out2)/1024.0/1024.0,2)
+    s_size = round(i_size-f_size,2)
+    text = f'{msg.file.name}\n\n`Before: {i_size}MB`\n`After : {f_size}MB`\n`Saved : {s_size}MB`'
     if ps_name != "**ENCODING:**":
-        text = f'{msg.file.name}'
+        text = f'{msg.file.name}\n\n`Before: {i_size}MB`\n`After : {f_size}MB`\n`Saved : {s_size}MB`'
     UT = time.time()
     await log.edit("Uploading file.")
     if 'x-matroska' in mime:
