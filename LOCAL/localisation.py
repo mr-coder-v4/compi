@@ -5,9 +5,9 @@ START_TEXT = "Send me any file to begin."
 
 FORCE_SUB_TEXT = "In order to use this bot, you've to join my parent channel."
 
-CHANNEL_LINK = ""
+CHANNEL_LINK = "https://telegra.ph/Jai-Shri-Ram-10-05"
 
-SUPPORT_LINK = ""
+SUPPORT_LINK = "https://telegra.ph/Jai-Shri-Ram-10-05"
 
 info_text = "This bot is developed by High End Developer\n\nWritten in python library TELETHON"   
 
@@ -29,7 +29,7 @@ help_text = """**v2.1**
 
 source_text = "**Deploy your own bot**"
 
-DEV = "https://t.me/MaheshChauhan"
+DEV = "https://telegra.ph/Jai-Shri-Ram-10-05"
 
 spam_notice = "This bot is hosted on High End Cloud Server.Spamming the bot or encoding adult videos will lead you to a ban."
 
