@@ -1,3 +1,16 @@
+#  This file is part of the VIDEOconvertor distribution.
+#  Copyright (c) 2021 vasusen-code ; All rights reserved. 
+#
+#  This program is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, version 3.
+#
+#  This program is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#  General Public License for more details.
+#
+#  License can be found in < https://github.com/vasusen-code/VIDEOconvertor/blob/public/LICENSE> .
 
 import asyncio, time, subprocess, re, os
 
@@ -31,8 +44,8 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4"
         out = new_name + ".mp4"
     elif 'x-matroska' in mime:
-        n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4" 
-        out = new_name + ".mkv"            
+        n = "media_" + dt.now().isoformat("_", "seconds") + ".mkv" 
+        out = new_name + ".mp4"            
     elif 'webm' in mime:
         n = "media_" + dt.now().isoformat("_", "seconds") + ".webm" 
         out = new_name + ".mp4"
@@ -81,12 +94,11 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     else:
         out2 = dt.now().isoformat("_", "seconds") + ".mp4" 
     os.rename(out, out2)
-    i_size = round(os.path.getsize(name)/1024.0/1024.0,2)
-    f_size = round(os.path.getsize(out2)/1024.0/1024.0,2)
-    s_size = round(i_size-f_size,2)
-    text = f'{msg.file.name}\n\n`Before: {i_size}MB`\n`After : {f_size}MB`\n`Saved : {s_size}MB`'
+    i_size = os.path.getsize(name)
+    f_size = os.path.getsize(out2)
+    text = f'COMPRESSED by** : @{BOT_UN}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
     if ps_name != "**ENCODING:**":
-        text = f'{msg.file.name}\n\n`Before: {i_size}MB`\n`After : {f_size}MB`\n`Saved : {s_size}MB`'
+        text = f'**COMPRESSED by** : @{BOT_UN}\n\nbefore compressing : `{i_size}`\nafter compressing : `{f_size}`'
     UT = time.time()
     if 'webm' in mime:
         try:
@@ -112,7 +124,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG3, attributes=attributes, force_document=True)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG3, attributes=attributes, force_document=False)
         except Exception:
             try:
                 uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
