@@ -69,7 +69,7 @@ async def _compress(event):
     await event.edit("**🗜COMPRESS**",
                     buttons=[
                         [Button.inline("HEVC COMPRESS", data="hcomp"),
-                         Button.inline("FAST COMPRESS", data="fcomp")
+                         Button.inline("FAST COMPRESS", data="fcomp"),
                          Button.inline("720p HEVC", data="720comp")],
                         [Button.inline("BACK", data="back")]])
                                           
