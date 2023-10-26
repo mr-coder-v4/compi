@@ -100,9 +100,9 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     os.rename(out, out2)
     i_size = os.path.getsize(name)
     f_size = os.path.getsize(out2)
-    text = f'{msg.file.name} {wdt}×{hgt}'
+    text = f'{msg.file.name}'
     if ps_name != "**ENCODING:**":
-        text = f'{msg.file.name} {wdt}×{hgt}'
+        text = f'{msg.file.name}'
     UT = time.time()
     if 'webm' in mime:
         try:
