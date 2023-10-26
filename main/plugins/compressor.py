@@ -118,7 +118,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG3, attributes=attributes, force_document=False)
         except Exception as e:
             os.rmdir("encodemedia")
             print(e)
