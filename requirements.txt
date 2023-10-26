@@ -1,4 +1,4 @@
-https://github.com/vasusen-code/my-tt/archive/refs/tags/v1.24.0.zip
+telethon
 cryptg
 tgcrypto
 ethon
