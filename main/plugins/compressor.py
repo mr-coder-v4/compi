@@ -44,8 +44,8 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4"
         out = new_name + ".mp4"
     elif 'x-matroska' in mime:
-        n = "media_" + dt.now().isoformat("_", "seconds") + ".mkv" 
-        out = new_name + ".mp4"            
+        n = "media_" + dt.now().isoformat("_", "seconds") + ".mp4" 
+        out = new_name + ".mkv"            
     elif 'webm' in mime:
         n = "media_" + dt.now().isoformat("_", "seconds") + ".webm" 
         out = new_name + ".mp4"
@@ -82,6 +82,8 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx265 -crf 23 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 4:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx264 -crf 23 -acodec copy -c:s copy """{out}""" -y'
+    elif ffmpeg_cmd == 5:
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}"""  -preset ultrafast -vcodec libx265 -vf scale=1280:720 -acodec copy -c:s copy """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, ps_name)
     except Exception as e:
@@ -109,9 +111,14 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
             print(e)
             return await edit.edit(f"An error occured while uploading.\n\nContact [SUPPORT]({SUPPORT_LINK})", link_preview=False)
     elif 'x-matroska' in mime:
+        metadata = video_metadata(out2)
+        width = metadata["width"]
+        height = metadata["height"]
+        duration = metadata["duration"]
+        attributes = [DocumentAttributeVideo(duration=duration, w=width, h=height, supports_streaming=True)]
         try:
             uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
+            await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
         except Exception as e:
             os.rmdir("encodemedia")
             print(e)
@@ -128,7 +135,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
         except Exception:
             try:
                 uploader = await fast_upload(f'{out2}', f'{out2}', UT, Drone, edit, '**UPLOADING:**')
-                await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=True)
+                await Drone.send_file(event.chat_id, uploader, caption=text, thumb=JPG, force_document=False)
             except Exception as e:
                 os.rmdir("encodemedia")
                 print(e)
