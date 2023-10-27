@@ -57,7 +57,50 @@ async def storage(event):
     mem_u = format(memory.used/1024.0/1024.0/1024.0,".2f")
     await event.reply(f"`Total Disk Space: {d_t} GB\nAvailable Disk Space: {d_f} GB\nUsed Disk Space: {d_u} GB\nUsed Disk Percentage: {d_p}%\n---------------------------------\nTotal RAM: {mem_t} GB\nAvailable RAM: {mem_a} GB\nFree RAM: {mem_f} GB\nRAM Utilized: {mem_u} GB\nRAM Utilized Percentage: {mem_p}%`")
     return
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------#
+@Drone.on(events.NewMessage(incoming=True, pattern="/status"))
+async def show_status(event):
+    currentTime = TimeFormatter(time() - botStartTime)
+    osUptime = TimeFormatter(time() - boot_time())
+    total, used, free, disk = disk_usage('/')
+    total = humanbytes(total)
+    used = humanbytes(used)
+    free = humanbytes(free)
+    sent = humanbytes(net_io_counters().bytes_sent)
+    recv = humanbytes(net_io_counters().bytes_recv)
+    cpuUsage = cpu_percent(interval=0.5)
+    p_core = cpu_count(logical=False)
+    t_core = cpu_count(logical=True)
+    swap = swap_memory()
+    swap_p = swap.percent
+    memory = virtual_memory()
+    mem_t = humanbytes(memory.total)
+    mem_a = humanbytes(memory.available)
+    mem_u = humanbytes(memory.used)
+    text = f"""<b>Uptime of</b>:
+- <b>Bot:</b> {currentTime}
+- <b>OS:</b> {osUptime}
 
+<b>Disk</b>:
+<b>- Total:</b> {total}
+<b>- Used:</b> {used}
+<b>- Free:</b> {free}
+
+<b>UL:</b> {sent} | <b>DL:</b> {recv}
+<b>CPU:</b> {cpuUsage}%
+
+<b>Cores:</b>
+<b>- Physical:</b> {p_core}
+<b>- Total:</b> {t_core}
+<b>- Used:</b> {swap_p}%
+
+<b>RAM:</b> 
+- <b>Total:</b> {mem_t}
+- <b>Free:</b> {mem_a}
+- <b>Used:</b> {mem_u}
+"""""
+    
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 @Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
 async def clear(event):
     try:
