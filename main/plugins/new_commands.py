@@ -1,11 +1,15 @@
 # CREATED BY MYSELF WITH ALL EMOTIONS
 import asyncio
-
+import time
 from .. import Drone
 from telethon import events, Button
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal
+from time import time
+
+from psutil import (boot_time, cpu_count, cpu_percent, disk_usage,
+                    net_io_counters, swap_memory, virtual_memory)
 
 @Drone.on(events.NewMessage(incoming=True, pattern="/ping"))
 async def test(event):
@@ -98,8 +102,8 @@ async def show_status(event):
 - <b>Total:</b> {mem_t}
 - <b>Free:</b> {mem_a}
 - <b>Used:</b> {mem_u}
-"""""
-    
+"""
+    return text
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 @Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
 async def clear(event):
