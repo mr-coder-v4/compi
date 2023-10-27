@@ -75,7 +75,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     progress = f"progress-{FT}.txt"
     cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" None """{out}""" -y'
     if ffmpeg_cmd == 1:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -vf scale=854:480 -acodec copy -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265 -vf scale=854:480:flags=lanczos -acodec copy -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 2:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx265 -crf 22 -preset ultrafast -s 640x360 -c:a copy -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 3:
@@ -83,9 +83,9 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     elif ffmpeg_cmd == 4:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx264 -crf 23 -acodec copy -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 5:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265 -vf scale=-1:720:flags=lanczos -acodec copy -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265 -vf scale=1280x720:flags=lanczos -acodec copy -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 6:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265  -vf scale=-1:1080:flags=lanczos -acodec copy -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265  -vf scale=1920x1080:flags=lanczos -acodec copy -c:s copy -map 0 """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, ps_name)
     except Exception as e:
