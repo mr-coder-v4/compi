@@ -83,7 +83,7 @@ async def show_status(event):
     mem_t = humanbytes(memory.total)
     mem_a = humanbytes(memory.available)
     mem_u = humanbytes(memory.used)
-    text = f"""<b>Uptime of</b>:
+    await event.reply(f"""<b>Uptime of</b>:
 - <b>Bot:</b> {currentTime}
 - <b>OS:</b> {osUptime}
 
@@ -104,8 +104,8 @@ async def show_status(event):
 - <b>Total:</b> {mem_t}
 - <b>Free:</b> {mem_a}
 - <b>Used:</b> {mem_u}
-"""
-    return text
+""")
+    return 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 @Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
 async def clear(event):
