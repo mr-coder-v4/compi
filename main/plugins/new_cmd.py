@@ -84,26 +84,22 @@ async def show_status(event):
     mem_a = humanbytes(memory.available)
     mem_u = humanbytes(memory.used)
     await event.reply(f"""<b>Uptime of</b>:
-- <b>Bot:</b> {currentTime}
-- <b>OS:</b> {osUptime}
+Bot: {currentTime}
+OS: {osUptime}
 
-<b>Disk</b>:
-<b>- Total:</b> {total}
-<b>- Used:</b> {used}
-<b>- Free:</b> {free}
+Total Disk: {total}
+Used: {used}
+Free: {free}
 
-<b>UL:</b> {sent} | <b>DL:</b> {recv}
-<b>CPU:</b> {cpuUsage}%
-
-<b>Cores:</b>
-<b>- Physical:</b> {p_core}
-<b>- Total:</b> {t_core}
-<b>- Used:</b> {swap_p}%
-
-<b>RAM:</b> 
-- <b>Total:</b> {mem_t}
-- <b>Free:</b> {mem_a}
-- <b>Used:</b> {mem_u}
+UL: {sent} | DL: {recv}
+CPU: {cpuUsage}%
+Physical Core: {p_core}
+Total Core:</b> {t_core}
+Used: {swap_p}%
+ 
+Total RAM: {mem_t}
+Free RAM: {mem_a}
+Used: {mem_u}
 """)
     return 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------#
