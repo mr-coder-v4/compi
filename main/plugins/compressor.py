@@ -77,7 +77,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     if ffmpeg_cmd == 1:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265 -vf scale=854:480:flags=lanczos -acodec copy -b:a 320k -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 2:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx265 -crf 22 -preset ultrafast -s 640x360 -c:a copy -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx265 -crf 22 -preset ultrafast -s 640x360 -c:a copy -b:a 320k -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 3:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx265 -crf 23 -acodec copy -c:s copy -map 0 """{out}""" -y'
     elif ffmpeg_cmd == 4:
