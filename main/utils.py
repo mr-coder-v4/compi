@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 import importlib
@@ -6,6 +7,7 @@ import math
 import time
 from pathlib import Path
 
+botStartTime = time.time()
 def load_plugins(plugin_name):
     path = Path(f"main/plugins/{plugin_name}.py")
     name = "main.plugins.{}".format(plugin_name)
