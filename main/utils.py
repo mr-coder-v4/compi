@@ -4,7 +4,6 @@ import importlib
 import asyncio
 import math
 import time
-from .. import PROGRESS
 from pathlib import Path
 
 def load_plugins(plugin_name):
@@ -17,55 +16,6 @@ def load_plugins(plugin_name):
     sys.modules["main.plugins." + plugin_name] = load
     print("main has Imported " + plugin_name)
 
-
-
-async def progress_for_pyrogram(current, total, ud_type, message, start):
-    now = time.time()
-    diff = now - start
-    if not round(diff % 10.00) or current == total:
-        percentage = current * 100 / total
-        speed = current / diff
-        elapsed_time = round(diff)
-        time_to_completion = round((total - current) / speed)
-        estimated_total_time = elapsed_time + time_to_completion
-        elapsed_time = TimeFormatter(seconds=elapsed_time)
-        estimated_total_time = TimeFormatter(seconds=estimated_total_time)
-        progress = "{0}{1}".format(
-            ''.join(["█" for i in range(math.floor(percentage / 10))]),
-            ''.join(["░" for i in range(10 - math.floor(percentage / 10))])
-        )
-        tmp = progress + PROGRESS.format(
-            humanbytes(current),
-            humanbytes(total),
-            humanbytes(speed) + "/s",
-            estimated_total_time if estimated_total_time != '...' else "Calculating"
-        )
-        await message.edit(
-            text="{}\n{}".format(
-                ud_type,
-                tmp
-            )
-        )
-        await asyncio.sleep(5)
-
-
-async def progress_for_url(downloader, msg):
-    total_length = downloader.filesize if downloader.filesize else 0
-    downloaded = downloader.get_dl_size()
-    speed = downloader.get_speed(human=True)
-    estimated_total_time = downloader.get_eta(human=True)
-    percentage = downloader.get_progress() * 100
-    progress = "{0}{1}".format(
-        ''.join(["█" for i in range(math.floor(percentage / 10))]),
-        ''.join(["░" for i in range(10 - math.floor(percentage / 10))])
-    )
-    progress_str = "Downloading\n" + progress + PROGRESS.format(
-        humanbytes(downloaded),
-        humanbytes(total_length),
-        speed,
-        estimated_total_time)
-    await msg.edit_text(progress_str)
-    await asyncio.sleep(5)
 
 
 def humanbytes(size):
