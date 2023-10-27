@@ -70,8 +70,7 @@ async def _compress(event):
                     buttons=[
                         [Button.inline("HEVC COMPRESS", data="hcomp"),
                          Button.inline("FAST COMPRESS", data="fcomp"),
-                         Button.inline("720p HEVC", data="720comp"),
-                         Button.inline("1080p HEVC", data="1080comp")],
+                         Button.inline("720p HEVC", data="720comp")],
                         [Button.inline("BACK", data="back")]])
                                           
 @Drone.on(events.callbackquery.CallbackQuery(data="convert"))
@@ -229,22 +228,7 @@ async def _720comp(event):
         await compress(event, msg, ffmpeg_cmd=5)
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
-    else:
-        await event.edit("Another process in progress!")
-        
-@Drone.on(events.callbackquery.CallbackQuery(data="1080comp"))
-async def _1080comp(event):
-    button = await event.get_message()
-    msg = await button.get_reply_message()  
-    if not os.path.isdir("encodemedia"):
-        await event.delete()
-        os.mkdir("encodemedia")
-        await compress(event, msg, ffmpeg_cmd=6)
-        if os.path.isdir("encodemedia"):
-            os.rmdir("encodemedia")
-    else:
-        await event.edit("Another process in progress!")  
-        
+            
 @Drone.on(events.callbackquery.CallbackQuery(data="265"))
 async def _265(event):
     button = await event.get_message()
