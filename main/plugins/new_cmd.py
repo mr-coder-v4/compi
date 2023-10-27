@@ -9,7 +9,7 @@ import psutil, os, signal
 from time import time
 from psutil import (boot_time, cpu_count, cpu_percent, disk_usage,
                     net_io_counters, swap_memory, virtual_memory)
-from .main.util import TimeFormatter, humanbytes
+from .main.utils import TimeFormatter, humanbytes
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
