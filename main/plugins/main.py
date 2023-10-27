@@ -228,7 +228,9 @@ async def _720comp(event):
         await compress(event, msg, ffmpeg_cmd=5)
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
-            
+    else:
+        await event.edit("Another process in progress!")
+          
 @Drone.on(events.callbackquery.CallbackQuery(data="265"))
 async def _265(event):
     button = await event.get_message()
