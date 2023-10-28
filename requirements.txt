@@ -1,5 +1,5 @@
 telethon
 cryptg
 tgcrypto
-ethon
+https://codeload.github.com/mr-coder-v4/ethon/zip/refs/heads/main
 python-dotenv
