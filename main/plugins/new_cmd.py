@@ -83,7 +83,7 @@ async def show_status(event):
     mem_t = humanbytes(memory.total)
     mem_a = humanbytes(memory.available)
     mem_u = humanbytes(memory.used)
-    await event.reply(f"`
+    await event.reply(f"
 Bot Uptime: {currentTime}
 OS: {osUptime}
 
@@ -99,8 +99,7 @@ Physical Core: {p_core}
  
 Total RAM: {mem_t}
 Free RAM: {mem_a}
-Used: {mem_u}
-`")
+Used: {mem_u}")
     return 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 @Drone.on(events.NewMessage(incoming=True, pattern="/clear"))
