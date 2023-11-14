@@ -81,10 +81,8 @@ async def show_status(event):
     swap_p = swap.percent
     stt = dt.now()
     ed = dt.now()
-    v = ts(int((ed - uptime).seconds) * 1000)
     ms = (ed - stt).microseconds / 1000
-    p = f"🌋Pɪɴɢ = {ms}ms"
-    cp = v + "\n" + p
+    p = {ms}ms
     memory = virtual_memory()
     mem_t = humanbytes(memory.total)
     mem_a = humanbytes(memory.available)
@@ -92,7 +90,7 @@ async def show_status(event):
     await event.reply(f"""`
 Bot Uptime: {currentTime}
 OS: {osUptime}
-Ping: {cp}
+Ping: {p}
 UL: {sent} | DL: {recv}
 -------------------------
 Total Disk: {total}
