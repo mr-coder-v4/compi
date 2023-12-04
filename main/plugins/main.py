@@ -68,11 +68,8 @@ async def _encode(event):
 async def _compress(event):
     await event.edit("**🗜COMPRESS**",
                     buttons=[
-                        [Button.inline("HEVC", data="hcomp"),
-                         Button.inline("FAST", data="fcomp"),
-                         Button.inline("480.10", data="480b"),
-                         Button.inline("480p", data="480comp"),
-                         Button.inline("720p", data="720comp")],
+                        [Button.inline("HEVC COMPRESS", data="hcomp"),
+                         Button.inline("FAST COMPRESS", data="fcomp")],
                         [Button.inline("BACK", data="back")]])
                                           
 @Drone.on(events.callbackquery.CallbackQuery(data="convert"))
@@ -207,19 +204,6 @@ async def hcomp(event):
     else:
         await event.edit("Another process in progress!")
 
-@Drone.on(events.callbackquery.CallbackQuery(data="480b"))
-async def _480b(event):
-    button = await event.get_message()
-    msg = await button.get_reply_message()  
-    if not os.path.isdir("encodemedia"):
-        await event.delete()
-        os.mkdir("encodemedia")
-        await compress(event, msg, ffmpeg_cmd=7)
-        if os.path.isdir("encodemedia"):
-            os.rmdir("encodemedia")
-    else:
-        await evfent.edit("Another process in progress!")
- 
 @Drone.on(events.callbackquery.CallbackQuery(data="fcomp"))
 async def fcomp(event):
     button = await event.get_message()
@@ -228,32 +212,6 @@ async def fcomp(event):
         await event.delete()
         os.mkdir("encodemedia")
         await compress(event, msg, ffmpeg_cmd=2)
-        if os.path.isdir("encodemedia"):
-            os.rmdir("encodemedia")
-    else:
-        await event.edit("Another process in progress!")
-
-@Drone.on(events.callbackquery.CallbackQuery(data="480comp"))
-async def _480comp(event):
-    button = await event.get_message()
-    msg = await button.get_reply_message()  
-    if not os.path.isdir("encodemedia"):
-        await event.delete()
-        os.mkdir("encodemedia")
-        await compress(event, msg, ffmpeg_cmd=6)
-        if os.path.isdir("encodemedia"):
-            os.rmdir("encodemedia")
-    else:
-        await event.edit("Another process in progress!")                                 
-        
-@Drone.on(events.callbackquery.CallbackQuery(data="720comp"))
-async def _720comp(event):
-    button = await event.get_message()
-    msg = await button.get_reply_message()  
-    if not os.path.isdir("encodemedia"):
-        await event.delete()
-        os.mkdir("encodemedia")
-        await compress(event, msg, ffmpeg_cmd=5)
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
     else:
