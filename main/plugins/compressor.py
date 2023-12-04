@@ -75,19 +75,13 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     progress = f"progress-{FT}.txt"
     cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" None """{out}""" -y'
     if ffmpeg_cmd == 1:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 23 -acodec copy -c:s copy """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 28 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 2:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx265 -crf 22 -preset ultrafast -s 640x360 -c:a copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 3:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx265 -crf 23 -acodec copy -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx265 -crf 23 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 4:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx264 -crf 23 -acodec copy -c:s copy -map 0 """{out}""" -y'
-    elif ffmpeg_cmd == 5:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -pix_fmt yuv420p -vf scale=1280x720:flags=lanczos -acodec copy -b:a 320k -c:s copy -map 0 """{out}""" -y'
-    elif ffmpeg_cmd == 6:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -pix_fmt yuv420p -vcodec libx265 -vf scale=854:480:flags=lanczos -acodec copy -b:a 320k -c:s copy -map 0 """{out}""" -y'
-    elif ffmpeg_cmd == 7:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset fast -vcodec libx265 -profile:v main10 -x265-params "level=6.1:high-tier=1:crf=23" -pix_fmt yuv444p12le -c:s copy -map 0 """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx264 -crf 23 -acodec copy -c:s copy """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, ps_name)
     except Exception as e:
