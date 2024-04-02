@@ -75,7 +75,7 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     progress = f"progress-{FT}.txt"
     cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" None """{out}""" -y'
     if ffmpeg_cmd == 1:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 28 -acodec copy -c:s copy """{out}""" -y'
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 25 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 2:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx265 -crf 22 -preset ultrafast -s 640x360 -c:a copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 3:
