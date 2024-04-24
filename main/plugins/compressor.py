@@ -63,7 +63,29 @@ async def compress(event, msg, ffmpeg_cmd=0, ps_name=None):
     if ffmpeg_cmd == 1:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset ultrafast -vcodec libx265 -crf 28 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 2:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i "{name}" -threads 16 -preset ultrafast -vcodec libx265 -x265-params "level=6.1:profile=main:high-tier=1:tag=hvc1" -crf 25 -color_primaries 1 -color_trc 1 -colorspace 1 -pix_fmt yuv420p -color_range 2 -acodec copy -c:s copy -map 0 "{out}" -y'
+        #cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i "{name}" -threads 16 -preset ultrafast -vcodec libx265 -x265-params "level=6.1:profile=main:high-tier=1:tag=hvc1" -crf 25 -color_primaries 1 -color_trc 1 -colorspace 1 -pix_fmt yuv420p -color_range 2 -acodec copy -c:s copy -map 0 "{out}" -y'
+        cmd = f'''
+        ffmpeg -hide_banner \
+        -loglevel quiet \
+        -threads 16 \
+        -progress {progress} \
+        -i "{name}" \
+        -preset ultrafast \
+        -vcodec libx265 \
+        -x265-params "level=6.1:profile=main:high-tier=1:tag=hvc1" \
+        -crf 25 \
+        -pix_fmt yuv420p \
+        -color_primaries 1 \
+        -color_trc 1 \
+        -colorspace 1 \
+        -color_range 2 \
+        -r 30 \
+        -acodec copy \
+        -c:s copy \
+        -map 0 \
+        -y \
+        "{out}"
+        '''      
     elif ffmpeg_cmd == 3:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -preset faster -vcodec libx265 -crf 23 -acodec copy -c:s copy """{out}""" -y'
     elif ffmpeg_cmd == 4:
